@@ -13,6 +13,12 @@ print(f"\nQuestion: {question}\n")
 chunk_embeddings = []
 
 for chunk in chunks:
-    chunk_embeddings.append(
-        model.encode(chunk)
-    )
+    chunk_embeddings.append({
+        "text": chunk,
+        "embedding": model.encode(chunk)
+    })
+
+similarity = cos_sim(
+    question_embedding,
+    chunk_embeddings
+)
