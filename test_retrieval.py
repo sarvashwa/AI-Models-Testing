@@ -1,11 +1,18 @@
 from sentence_transformers import SentenceTransformer
+from sentence_transformers.util import cos_sim
+from bells_chunks import chunks
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 question = "How was speech converted into notes?"
 
-embedding = model.encode(question)
+question_embedding = model.encode(question)
 
-print(type(embedding))
-print(len(embedding))
-print(embedding[:10])
+print(f"\nQuestion: {question}\n")
+
+chunk_embeddings = []
+
+for chunk in chunks:
+    chunk_embeddings.append(
+        model.encode(chunk)
+    )
