@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 from sentence_transformers.util import cos_sim
-from bells_chunks import chunks
+from test_chunks import chunks
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
