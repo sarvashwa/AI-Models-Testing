@@ -27,6 +27,12 @@ for chunk in chunks:
 
 sorted_chunks = sorted(chunk_embeddings, key=lambda x: x["simialrity"], reverse=True)
 
-for chunk in sorted_chunks:
-    print(f"Chunk: {chunk['text']}")
-    print(f"Similarity: {chunk['simialrity']}\n")
+top_k = 2
+top_chunks = sorted_chunks[:top_k]
+
+context = "\n\n".join(
+    chunk["text"]
+    for chunk in top_chunks
+)
+
+print(context)
