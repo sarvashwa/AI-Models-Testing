@@ -1,11 +1,11 @@
 from sentence_transformers import SentenceTransformer
 from sentence_transformers.util import cos_sim
-from test_chunks import chunks
+from bad_chunks import chunks
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# question = "How was speech converted into notes?"
-question = "What database was used?"
+question = "How was speech converted into notes?"
+# question = "What database was used?"
 
 question_embedding = model.encode(question)
 
