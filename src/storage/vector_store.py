@@ -35,3 +35,6 @@ class VectorStore:
             embeddings=embeddings,
             metadatas=metadatas,
         )
+
+    def count_chunks(self) -> int:
+        return self._collection.count()
