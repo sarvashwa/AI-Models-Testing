@@ -38,3 +38,27 @@ class VectorStore:
 
     def count_chunks(self) -> int:
         return self._collection.count()
+    
+    def search_chunks(
+            self, 
+            query_embedding: list[float],
+            top_k: int = 5
+        ) -> list[DocumentChunk]:
+    
+        results = self._collection.query(
+            query_embeddings=[query_embedding],
+            n_results=top_k
+        )
+    
+        return [
+        DocumentChunk(
+            id=chunk_id,
+            text=document,
+            metadata=metadata,
+        )
+        for chunk_id, document, metadata in zip(
+            results["ids"][0] or [],
+            results["documents"][0] or [],
+            results["metadatas"][0] or [],
+        )
+    ]
