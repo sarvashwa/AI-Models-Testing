@@ -5,7 +5,7 @@ from src.services.ingestion_service import IngestionService
 embedding_service = EmbeddingService()
 
 vector_store = VectorStore(
-    collection_name="learning"
+    collection_name="experiment_09"
 )
 
 ingestion_service = IngestionService(
@@ -21,7 +21,7 @@ chunks = [
 ]
 
 metadata = {
-    "source": "experiment_07"
+    "source": "experiment_09"
 }
 
 ingestion_service.ingest(
